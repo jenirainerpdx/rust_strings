@@ -2,5 +2,12 @@
 name = "rust_strings"
 version = "0.1.0"
 edition = "2024"
+authors = ["jenirainpdx"]
+license = "MIT"
+description = "Useful string utilities."
+keywords = ["parsing", "string"]
+categories = ["development-tools"]
+repository = "https://github.com/jenirainerpdx/rust_strings"
+readme = "README.md"
 
 [dependencies]
