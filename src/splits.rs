@@ -6,8 +6,8 @@
 //! input String.
 //!
 //! * Note: For each use case, the module includes one function which returns string slices with lifetime parameters
-//! (allowing borrowed elements for memory efficiency), and a separate, parallel function which returns fully owned Strings
-//! for those use cases which need longer lived return types.
+//!   (allowing borrowed elements for memory efficiency), and a separate, parallel function which returns fully owned Strings
+//!   for those use cases which need longer lived return types.
 //!
 
 /// Split on multiple delimiters - this will handle multiple delimiters,
@@ -21,7 +21,7 @@
 ///
 /// # Returns:
 /// * A `Vec<&str>` containing substrings of the input string `s`. The Vector is annotated with a lifetime parameter
-/// so that it will have a lifetime that is the same as the input string.
+///   so that it will have a lifetime that is the same as the input string.
 ///
 /// # Example:
 /// ```
@@ -104,8 +104,8 @@ pub fn split_on_delimiters_returns_owned(s: &str, delimiters: &[char]) -> Vec<St
 ///
 /// # Returns
 /// * A `Vec<&str>` containing substrings of the input string `s`. Each substring includes the
-/// delimiter at the end (except for the last substring, if the delimiter is the final character
-/// in the string).
+///   delimiter at the end (except for the last substring, if the delimiter is the final character
+///   in the string).
 ///
 /// # Examples
 /// ```
@@ -133,7 +133,7 @@ pub fn split_on_delimiters_returns_owned(s: &str, delimiters: &[char]) -> Vec<St
 /// - The function does not include substrings after the last delimiter.
 /// - If the input string does not include the delimiter, an empty vector will be returned.
 ///
-pub fn split_keeping_delimiter<'a>(s: &'a str, delimiter: char) -> Vec<&'a str> {
+pub fn split_keeping_delimiter(s: &str, delimiter: char) -> Vec<&str> {
     let mut output = Vec::new();
     let mut start = 0;
     for (i, c) in s.char_indices() {
@@ -187,7 +187,7 @@ pub fn split_keeping_delimiter_returns_owned(input_string: &str, delimiter: char
 ///
 /// # Returns
 /// * `Vec<&str>` - resulting from the split, potentially including empty
-///  string slices if the input_string did not contain n-1 delimiter characters.
+///   string slices if the input_string did not contain n-1 delimiter characters.
 ///
 /// # Examples:
 /// ```
@@ -213,21 +213,18 @@ pub fn split_keeping_delimiter_returns_owned(input_string: &str, delimiter: char
 /// let n = 5;
 /// let expected_outcome = vec!["This", "is", "a", "string.", ""];
 /// ```
-pub fn split_into_n_parts<'a>(input_string: &'a str, delimiter: char, n: usize) -> Vec<&'a str> {
-    let mut output: Vec<&str> = Vec::new();
+pub fn split_into_n_parts(input_string: &str, delimiter: char, n: usize) -> Vec<&str> {
     let count_expect_segments = input_string.chars().filter(|&x| x == delimiter).count() + 1;
-    if count_expect_segments == n {
-        output = input_string.split(delimiter).collect();
-    } else if count_expect_segments < n {
-        output = input_string.split(delimiter).collect();
-        for mut _i in count_expect_segments..n {
-            output.push("");
-            _i += 1;
+
+    match count_expect_segments.cmp(&n) {
+        std::cmp::Ordering::Equal => input_string.split(delimiter).collect(),
+        std::cmp::Ordering::Less => {
+            let mut output = input_string.split(delimiter).collect::<Vec<&str>>();
+            output.resize(n, "");
+            output
         }
-    } else {
-        output = input_string.splitn(n, delimiter).collect();
+        std::cmp::Ordering::Greater => input_string.splitn(n, delimiter).collect(),
     }
-    output
 }
 
 /// Splits a string slice into exactly N parts, padding with empty strings if needed. It uses
@@ -242,7 +239,7 @@ pub fn split_into_n_parts<'a>(input_string: &'a str, delimiter: char, n: usize) 
 ///
 /// # Returns
 /// * `Vec<String>` - resulting from the split, potentially including empty
-///  strings if the input_string did not contain n-1 delimiter characters.
+///   strings if the input_string did not contain n-1 delimiter characters.
 ///
 /// # Examples:
 /// ```
@@ -280,23 +277,23 @@ pub fn split_into_n_parts_returns_owned(
     delimiter: char,
     n: usize,
 ) -> Vec<String> {
-    let mut output: Vec<String> = Vec::new();
     let count_expect_segments = input_string.chars().filter(|&x| x == delimiter).count() + 1;
-    if count_expect_segments == n {
-        output = input_string.split(delimiter).map(String::from).collect();
-    } else if count_expect_segments < n {
-        output = input_string.split(delimiter).map(String::from).collect();
-        for mut _i in count_expect_segments..n {
-            output.push(String::from(""));
-            _i += 1;
+
+    match count_expect_segments.cmp(&n) {
+        std::cmp::Ordering::Equal => input_string.split(delimiter).map(String::from).collect(),
+        std::cmp::Ordering::Less => {
+            let mut output = input_string
+                .split(delimiter)
+                .map(String::from)
+                .collect::<Vec<String>>();
+            output.resize(n, "".to_string());
+            output
         }
-    } else {
-        output = input_string
+        std::cmp::Ordering::Greater => input_string
             .splitn(n, delimiter)
             .map(String::from)
-            .collect();
+            .collect(),
     }
-    output
 }
 
 // Remove common prefixes/suffixes
