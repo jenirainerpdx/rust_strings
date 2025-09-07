@@ -2,8 +2,10 @@
 //! Includes functions to check for palindromes, count character occurrences,
 //! and reverse strings.
 
+pub mod splits;
+
 ///
-/// Checks if the given string is a palindrome, ignoring case and non-alphanumeric characters.
+/// Checks if the given string is a palindrome, ignoring the case and non-alphanumeric characters.
 /// # Examples
 /// ```
 /// use rust_strings::check_for_palindrome;
