@@ -220,9 +220,9 @@ pub fn split_into_n_parts<'a>(input_string: &'a str, delimiter: char, n: usize) 
         output = input_string.split(delimiter).collect();
     } else if count_expect_segments < n {
         output = input_string.split(delimiter).collect();
-        for mut i in count_expect_segments..n {
+        for mut _i in count_expect_segments..n {
             output.push("");
-            i += 1;
+            _i += 1;
         }
     } else {
         output = input_string.splitn(n, delimiter).collect();
@@ -286,9 +286,9 @@ pub fn split_into_n_parts_returns_owned(
         output = input_string.split(delimiter).map(String::from).collect();
     } else if count_expect_segments < n {
         output = input_string.split(delimiter).map(String::from).collect();
-        for mut i in count_expect_segments..n {
+        for mut _i in count_expect_segments..n {
             output.push(String::from(""));
-            i += 1;
+            _i += 1;
         }
     } else {
         output = input_string
