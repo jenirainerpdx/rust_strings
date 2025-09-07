@@ -8,7 +8,7 @@ pub mod splits;
 /// Checks if the given string is a palindrome, ignoring the case and non-alphanumeric characters.
 /// # Examples
 /// ```
-/// use rust_strings::check_for_palindrome;
+/// use rusty_strings::check_for_palindrome;
 /// assert!(check_for_palindrome("A man, a plan, a canal: Panama"));
 /// assert!(!check_for_palindrome("race a car"));
 /// ```
@@ -21,7 +21,7 @@ pub fn check_for_palindrome(s: &str) -> bool {
 /// Counts the occurrences of a specific character in a string.
 /// # Examples
 /// ```
-/// use rust_strings::count_chars;
+/// use rusty_strings::count_chars;
 /// assert_eq!(count_chars('a', "banana"), 3);
 /// assert_eq!(count_chars('z', "hello"), 0);
 /// ```

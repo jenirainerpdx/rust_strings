@@ -1,4 +1,4 @@
-use rust_strings::count_chars;
+use rusty_strings::count_chars;
 
 #[test]
 fn test_count_chars() {

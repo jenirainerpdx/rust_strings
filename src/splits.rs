@@ -25,7 +25,7 @@
 ///
 /// # Example:
 /// ```
-/// use rust_strings::splits::split_on_delimiters;
+/// use rusty_strings::splits::split_on_delimiters;
 /// let input = "big,!a brown,cow!";
 /// let delimiters = [',','!','a',' '];
 /// let expected_output: Vec<&str> = ["big", "brown", "cow"].to_vec();
@@ -33,7 +33,7 @@
 /// ```
 ///
 /// ```
-/// use rust_strings::splits::split_on_delimiters;
+/// use rusty_strings::splits::split_on_delimiters;
 /// let input = "<html><body><h1>Heading</h1></body></html>";
 /// let delimiters = ['<', '>', '/'];
 /// let expected_output: Vec<&str> = ["html", "body", "h1", "Heading", "h1", "body", "html"].to_vec();
@@ -70,7 +70,7 @@ pub fn split_on_delimiters<'a>(input_string: &'a str, delimiters: &[char]) -> Ve
 ///
 /// # Examples:
 /// ```
-/// use rust_strings::splits::split_on_delimiters_returns_owned;
+/// use rusty_strings::splits::split_on_delimiters_returns_owned;
 /// let input = "big,!a brown,cow!";
 /// let delimiters = [',','!','a',' '];
 /// let expected_output: Vec<String> = ["big".to_string(), "brown".to_string(), "cow".to_string()].to_vec();
@@ -109,21 +109,21 @@ pub fn split_on_delimiters_returns_owned(s: &str, delimiters: &[char]) -> Vec<St
 ///
 /// # Examples
 /// ```
-/// use rust_strings::splits::split_keeping_delimiter;
+/// use rusty_strings::splits::split_keeping_delimiter;
 /// let s = "hello,world,here";
 /// let result = split_keeping_delimiter(s, ',');
 /// assert_eq!(result, vec!["hello,", "world,"]);
 /// ```
 ///
 /// ```
-/// use rust_strings::splits::split_keeping_delimiter;
+/// use rusty_strings::splits::split_keeping_delimiter;
 /// let s = "hello,world,here,";
 /// let result = split_keeping_delimiter(s, ',');
 /// assert_eq!(result, vec!["hello,", "world,","here,"]);
 /// ```
 ///
 /// ```
-/// use rust_strings::splits::split_keeping_delimiter;
+/// use rusty_strings::splits::split_keeping_delimiter;
 /// let s = "no_delimiters_here";
 /// let result = split_keeping_delimiter(s, ',');
 /// assert_eq!(result, Vec::<&str>::new());
@@ -158,7 +158,7 @@ pub fn split_keeping_delimiter(s: &str, delimiter: char) -> Vec<&str> {
 ///
 /// # Example
 /// ```
-/// use rust_strings::splits::split_keeping_delimiter_returns_owned;
+/// use rusty_strings::splits::split_keeping_delimiter_returns_owned;
 /// let input = "hello,world,here";
 /// let delimiter = ',';
 /// let result = split_keeping_delimiter_returns_owned(input, delimiter);
@@ -191,7 +191,7 @@ pub fn split_keeping_delimiter_returns_owned(input_string: &str, delimiter: char
 ///
 /// # Examples:
 /// ```
-/// use rust_strings::splits::split_into_n_parts;
+/// use rusty_strings::splits::split_into_n_parts;
 /// let input_string = "This is a string.";
 /// let delimiter = " ";
 /// let n = 3;
@@ -199,7 +199,7 @@ pub fn split_keeping_delimiter_returns_owned(input_string: &str, delimiter: char
 /// ```
 ///
 /// ```
-/// use rust_strings::splits::split_into_n_parts;
+/// use rusty_strings::splits::split_into_n_parts;
 /// let input_string = "This is a string.";
 /// let delimiter = " ";
 /// let n = 4;
@@ -207,7 +207,7 @@ pub fn split_keeping_delimiter_returns_owned(input_string: &str, delimiter: char
 /// ```
 ///
 /// ```
-/// use rust_strings::splits::split_into_n_parts;
+/// use rusty_strings::splits::split_into_n_parts;
 /// let input_string = "This is a string.";
 /// let delimiter = " ";
 /// let n = 5;
@@ -243,7 +243,7 @@ pub fn split_into_n_parts(input_string: &str, delimiter: char, n: usize) -> Vec<
 ///
 /// # Examples:
 /// ```
-/// use rust_strings::splits::split_into_n_parts_returns_owned;
+/// use rusty_strings::splits::split_into_n_parts_returns_owned;
 /// let input_string = "This is a string.";
 /// let delimiter = ' ';
 /// let n = 3;
@@ -252,7 +252,7 @@ pub fn split_into_n_parts(input_string: &str, delimiter: char, n: usize) -> Vec<
 /// ```
 ///
 /// ```
-/// use rust_strings::splits::split_into_n_parts_returns_owned;
+/// use rusty_strings::splits::split_into_n_parts_returns_owned;
 /// let input_string = "This is a string.";
 /// let delimiter = ' ';
 /// let n = 4;
@@ -261,7 +261,7 @@ pub fn split_into_n_parts(input_string: &str, delimiter: char, n: usize) -> Vec<
 /// ```
 ///
 /// ```
-/// use rust_strings::splits::split_into_n_parts_returns_owned;
+/// use rusty_strings::splits::split_into_n_parts_returns_owned;
 /// let input_string = "This is a string.";
 /// let delimiter = ' ';
 /// let n = 5;

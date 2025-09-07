@@ -1,4 +1,4 @@
-use rust_strings::check_for_palindrome; // Replace with your crate name
+use rusty_strings::check_for_palindrome; // Replace with your crate name
 
 #[test]
 fn test_palindrome_with_spaces() {
