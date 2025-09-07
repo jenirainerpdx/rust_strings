@@ -14,7 +14,7 @@ pub mod splits;
 /// ```
 pub fn check_for_palindrome(s: &str) -> bool {
     let cleaned: String = s.chars().filter(|c| c.is_alphanumeric()).collect();
-    let reversed: String = string_reverse(&cleaned);
+    let reversed: String = cleaned.chars().rev().collect();
     cleaned.eq_ignore_ascii_case(&reversed)
 }
 
@@ -27,30 +27,4 @@ pub fn check_for_palindrome(s: &str) -> bool {
 /// ```
 pub fn count_chars(c: char, s: &str) -> usize {
     s.chars().filter(|&x| x == c).count()
-}
-
-/// Reverses the given string.
-/// # Examples
-/// ```
-/// use rust_strings::string_reverse;
-/// assert_eq!(string_reverse("hello"), "olleh");
-/// assert_eq!(string_reverse(""), "");
-/// ```
-pub fn string_reverse(s: &str) -> String {
-    s.chars().rev().collect()
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_string_reverse() {
-        assert_eq!(string_reverse("hello"), "olleh");
-    }
-
-    #[test]
-    fn test_string_reverse_empty() {
-        assert_eq!(string_reverse(""), "");
-    }
 }
