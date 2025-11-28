@@ -28,3 +28,13 @@ pub fn check_for_palindrome(s: &str) -> bool {
 pub fn count_chars(c: char, s: &str) -> usize {
     s.chars().filter(|&x| x == c).count()
 }
+
+/// Reverses a string.
+/// # Examples
+/// ```
+/// use rusty_strings::reverse_string;
+/// assert_eq!(reverse_string("hello"), "olleh");
+/// ```
+pub fn reverse_string(s: &str) -> String {
+    s.chars().rev().collect()
+}
