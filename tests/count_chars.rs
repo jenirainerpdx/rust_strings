@@ -47,4 +47,3 @@ fn test_count_chars_long_string() {
     assert_eq!(count_chars('b', &long_string), 1);
     assert_eq!(count_chars('a', &long_string), 505000);
 }
-
